@@ -77,6 +77,15 @@
   }
 }
 
+@keyframes code-matrix {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 .animate-pulse-slow {
   animation: pulse-slow 3s infinite;
 }
@@ -104,4 +113,31 @@
 
 .animate-reveal {
   animation: reveal 1s ease-out forwards;
+}
+
+.code-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.code-rain::before {
+  content: "10010101110010101001010001001010111001010001001010100101110000110";
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgb(78, 154, 6);
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  line-height: 1.5;
+  transform: translateY(0);
+  animation: code-matrix 20s linear infinite;
 }

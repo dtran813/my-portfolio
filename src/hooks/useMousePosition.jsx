@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 export const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -16,7 +16,7 @@ export const useMousePosition = () => {
     };
   }, []);
 
-  const getParrallaxStyle = (elementRef, depth) => {
+  const getParallaxStyle = (elementRef, depth) => {
     if (!elementRef.current) return {};
 
     const bounds = elementRef.current.getBoundingClientRect();
@@ -33,6 +33,6 @@ export const useMousePosition = () => {
 
   return {
     mousePosition,
-    getParrallaxStyle,
+    getParallaxStyle,
   };
 };
