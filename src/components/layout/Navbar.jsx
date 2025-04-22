@@ -10,11 +10,11 @@ export default function Navbar() {
   const { activeSection, isScrolled, scrollToSection } = useScrolling();
 
   const navItems = [
-    { id: "home", label: "Home" },
+    { id: "hero", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
-    { id: "technologies", label: "Techn" },
+    { id: "technologies", label: "Tech" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <div
           className={`text-xl font-bold flex items-center ${
-            isScrolled || activeSection !== "home" ? "opacity-100" : "opacity-0"
+            isScrolled || activeSection !== "hero" ? "opacity-100" : "opacity-0"
           } transition-opacity`}
         >
           <Code className={`mr-2 ${accentColor}`} />
