@@ -6,9 +6,11 @@ import { useMousePosition } from "@/hooks/useMousePosition";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { Mail, Download, Github, Linkedin, ArrowDown } from "lucide-react";
 import Link from "next/link";
+import { useScrolling } from "@/hooks/useScrolling";
 
 export default function HeroSection() {
   const { darkMode, cardBg, borderColor, accentColor } = useTheme();
+  const { scrollToSection } = useScrolling();
   const heroRef = useRef(null);
   const { getParallaxStyle } = useMousePosition();
 
