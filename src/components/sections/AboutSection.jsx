@@ -26,9 +26,9 @@ export default function AboutSection() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <div className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
+          <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
             # MY JOURNEY
-          </div>
+          </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
             The Story Behind The Code
             <div className="absolute -right-10 -top-10">
