@@ -5,6 +5,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import HeroSection from "@/components/sections/HeroSection";
 import ProjectSection from "@/components/sections/ProjectSection";
+import TechnologiesSection from "@/components/sections/TechnologiesSection";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <ProjectSection />
       <ExperienceSection />
+      <TechnologiesSection />
     </div>
   );
 }
