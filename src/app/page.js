@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import AboutSection from "@/components/sections/AboutSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
@@ -15,11 +16,16 @@ export default function Home() {
       className={`${bgColor} ${textColor} min-h-screen transition-colors duration-300 relative`}
     >
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ProjectSection />
-      <ExperienceSection />
-      <TechnologiesSection />
+
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ProjectSection />
+        <ExperienceSection />
+        <TechnologiesSection />
+      </main>
+
+      <Footer />
     </div>
   );
 }
