@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import AboutSection from "@/components/sections/AboutSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
@@ -20,6 +21,7 @@ export default function Home() {
       <ProjectSection />
       <ExperienceSection />
       <TechnologiesSection />
+      <Footer />
     </div>
   );
 }
