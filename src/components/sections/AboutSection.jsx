@@ -1,6 +1,5 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { Download, Mail, Sparkles, Terminal } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function AboutSection() {
   const { darkMode, borderColor, cardBg, accentColor } = useTheme();

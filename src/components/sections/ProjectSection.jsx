@@ -1,20 +1,12 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
+import { PROJECTS } from "@/utils/constants";
 import { ArrowRight, ExternalLink, Github, PanelsTopLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function ProjectSection() {
   const { darkMode, borderColor, accentColor } = useTheme();
-
-  const projects = [1, 2, 3, 4].map((item) => ({
-    id: item,
-    title: `Project ${item}`,
-    description: `Description for project ${item}.`,
-    imageUrl: `https://via.placeholder.com/300x200?text=Project+${item}`,
-    technologies: ["React", "TypeScript", "Node.js"],
-  }));
 
   return (
     <section id="projects" className="py-20 relative">
@@ -40,7 +32,7 @@ export default function ProjectSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {projects.map((project) => (
+          {PROJECTS.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -108,19 +100,25 @@ function ProjectCard({ project, darkMode, borderColor }) {
                   </p>
                 </div>
                 <div className="flex space-x-2">
-                  <Link
-                    href="#"
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Repository"
                     className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                   >
                     <Github size={16} />
-                  </Link>
+                  </a>
 
-                  <Link
-                    href="#"
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Live Demo"
                     className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                   >
                     <ExternalLink size={16} />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
-import { Code, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
+import { SITE_CONFIG } from "@/utils/constants";
+import { Code, Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const { darkMode, borderColor, accentColor } = useTheme();
@@ -19,35 +19,29 @@ export default function Footer() {
           </div>
 
           <div className="flex space-x-6 items-center">
-            <Link
-              href="#"
+            <a
+              href={SITE_CONFIG.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${
                 darkMode ? "hover:text-indigo-400" : "hover:text-indigo-600"
               } transition-colors transform hover:scale-110`}
               aria-label="GitHub"
             >
               <Github size={20} />
-            </Link>
+            </a>
 
-            <Link
-              href="#"
+            <a
+              href={SITE_CONFIG.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${
                 darkMode ? "hover:text-indigo-400" : "hover:text-indigo-600"
               } transition-colors transform hover:scale-110`}
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
-            </Link>
-
-            <Link
-              href="#"
-              className={`${
-                darkMode ? "hover:text-indigo-400" : "hover:text-indigo-600"
-              } transition-colors transform hover:scale-110`}
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </Link>
+            </a>
           </div>
         </div>
 

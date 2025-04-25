@@ -1,55 +1,11 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
+import { TECH_CATEGORIES } from "@/utils/constants";
 import { Mail } from "lucide-react";
 
 export default function TechnologiesSection() {
   const { darkMode, borderColor, cardBg, accentColor } = useTheme();
-
-  const techCategories = [
-    {
-      title: "Frontend",
-      description:
-        "Creating responsive, intuitive user interfaces with modern frameworks and tools",
-      items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux"],
-      icon: "🎨",
-    },
-    {
-      title: "Backend",
-      description:
-        "Building robust server-side applications and APIs that power web applications",
-      items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL"],
-      icon: "⚙️",
-    },
-    {
-      title: "DevOps",
-      description:
-        "Streamlining deployment and ensuring reliable, scalable application infrastructure",
-      items: ["Docker", "AWS", "GitHub Actions", "Terraform", "Nginx"],
-      icon: "🚀",
-    },
-    {
-      title: "Tools",
-      description:
-        "Leveraging industry-standard tools to optimize the development workflow",
-      items: ["Git", "VS Code", "Webpack", "Jest", "Figma"],
-      icon: "🛠️",
-    },
-    {
-      title: "Mobile",
-      description:
-        "Developing cross-platform mobile applications with native-like performance",
-      items: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
-      icon: "📱",
-    },
-    {
-      title: "Other",
-      description:
-        "Additional technologies and languages that round out my technical expertise",
-      items: ["Python", "Java", "C#", "WebSockets", "Redis"],
-      icon: "🧠",
-    },
-  ];
 
   return (
     <section id="technologies" className="py-20 relative">
@@ -72,7 +28,7 @@ export default function TechnologiesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {techCategories.map((category) => (
+          {TECH_CATEGORIES.map((category) => (
             <TechnologyCard
               key={category.title}
               category={category}

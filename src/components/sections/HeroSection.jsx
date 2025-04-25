@@ -5,8 +5,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 import { Mail, Download, Github, Linkedin, ArrowDown } from "lucide-react";
-import Link from "next/link";
 import { useScrolling } from "@/hooks/useScrolling";
+import { SITE_CONFIG } from "@/utils/constants";
 
 export default function HeroSection() {
   const { darkMode, cardBg, borderColor, accentColor } = useTheme();
@@ -261,8 +261,11 @@ export default function HeroSection() {
             </div>
 
             <div className="flex items-center space-x-6 pt-4">
-              <Link
-                href="https://github.com/dtran813"
+              <a
+                href={SITE_CONFIG.socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
                 className={`group flex items-center ${
                   darkMode
                     ? "text-gray-400 hover:text-white"
@@ -281,9 +284,12 @@ export default function HeroSection() {
                     @dtran813
                   </span>
                 </span>
-              </Link>
-              <Link
-                href="#"
+              </a>
+              <a
+                href={SITE_CONFIG.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
                 className={`group flex items-center ${
                   darkMode
                     ? "text-gray-400 hover:text-white"
@@ -302,7 +308,7 @@ export default function HeroSection() {
                     Connect
                   </span>
                 </span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

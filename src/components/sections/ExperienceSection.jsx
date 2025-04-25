@@ -1,50 +1,11 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
+import { EXPERIENCES } from "@/utils/constants";
 import { Download } from "lucide-react";
 
 export default function ExperienceSection() {
   const { darkMode, borderColor, cardBg, accentColor } = useTheme();
-
-  const experiences = [
-    {
-      year: "2022 - Present",
-      title: "Senior Software Engineer",
-      company: "Company Three",
-      location: "San Francisco, CA",
-      points: [
-        "Led development of mission-critical features for the flagship product",
-        "Mentored junior developers and conducted technical interviews",
-        "Architected scalable backend services using Node.js and AWS",
-      ],
-      technologies: ["React", "Node.js", "AWS", "MongoDB"],
-      isCurrent: true,
-    },
-    {
-      year: "2020 - 2022",
-      title: "Software Engineer",
-      company: "Company Two",
-      location: "Seattle, WA",
-      points: [
-        "Developed and maintained RESTful APIs and frontend components",
-        "Collaborated with design team to implement UI/UX improvements",
-        "Improved test coverage and CI/CD pipeline efficiency",
-      ],
-      isCurrent: false,
-    },
-    {
-      year: "2018 - 2020",
-      title: "Junior Developer",
-      company: "Company One",
-      location: "Boston, MA",
-      points: [
-        "Built responsive web applications using React and TypeScript",
-        "Assisted with database design and query optimization",
-        "Participated in agile development process and sprint planning",
-      ],
-      isCurrent: false,
-    },
-  ];
 
   return (
     <section id="experience" className="py-20 relative">
@@ -79,7 +40,7 @@ export default function ExperienceSection() {
             }`}
           ></div>
 
-          {experiences.map((job, i) => (
+          {EXPERIENCES.map((job, i) => (
             <div key={job.year} className="relative mb-20 last:mb-0">
               <div className="grid grid-cols-12 gap-8 items-start">
                 <div

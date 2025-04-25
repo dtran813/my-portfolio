@@ -2,20 +2,12 @@
 
 import { useTheme } from "@/contexts/ThemeContext";
 import { useScrolling } from "@/hooks/useScrolling";
+import { NAV_ITEMS, SITE_CONFIG } from "@/utils/constants";
 import { Code, Github, Linkedin, Moon, Sun } from "lucide-react";
-import Link from "next/link";
 
 export default function Navbar() {
   const { darkMode, toggleDarkMode, accentColor, borderColor } = useTheme();
   const { activeSection, isScrolled, scrollToSection } = useScrolling();
-
-  const navItems = [
-    { id: "hero", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "projects", label: "Projects" },
-    { id: "experience", label: "Experience" },
-    { id: "technologies", label: "Tech" },
-  ];
 
   return (
     <nav
@@ -36,11 +28,11 @@ export default function Navbar() {
           } transition-opacity`}
         >
           <Code className={`mr-2 ${accentColor}`} />
-          <span>HoaTran.dev</span>
+          <span>{SITE_CONFIG.domain}</span>
         </div>
 
         <div className="flex items-center space-x-8">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
@@ -76,8 +68,11 @@ export default function Navbar() {
             </div>
           </button>
 
-          <Link
-            href="#"
+          <a
+            href={SITE_CONFIG.socialLinks.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
             className={`p-2 rounded-full ${
               darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
             } transition-colors relative overflow-hidden group`}
@@ -86,10 +81,13 @@ export default function Navbar() {
             <div className="relative">
               <Github size={20} />
             </div>
-          </Link>
+          </a>
 
-          <Link
-            href="#"
+          <a
+            href={SITE_CONFIG.socialLinks.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
             className={`p-2 rounded-full ${
               darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
             } transition-colors relative overflow-hidden group`}
@@ -98,7 +96,7 @@ export default function Navbar() {
             <div className="relative">
               <Linkedin size={20} />
             </div>
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
