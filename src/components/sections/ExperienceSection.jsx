@@ -119,12 +119,15 @@ export default function ExperienceSection() {
           ))}
 
           <div className="flex justify-center mt-16">
-            <button
+            <a
+              href="/assets/HoaTran_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`flex items-center px-6 py-3 rounded-lg font-medium border ${borderColor} hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-all`}
             >
               <Download className="mr-2" size={18} />
-              Download Full Resume
-            </button>
+              View Full Resume
+            </a>
           </div>
         </div>
       </div>
