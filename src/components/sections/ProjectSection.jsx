@@ -2,8 +2,9 @@
 
 import { useTheme } from "@/contexts/ThemeContext";
 import { PROJECTS } from "@/utils/constants";
-import { ArrowRight, ExternalLink, Github, PanelsTopLeft } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import Carousel from "../ui/Carousel";
 
 export default function ProjectSection() {
   const { darkMode, borderColor, accentColor } = useTheme();
@@ -31,25 +32,18 @@ export default function ProjectSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {PROJECTS.map((project) => (
+        <Carousel
+          items={PROJECTS}
+          itemsPerSlide={2}
+          renderItem={(project) => (
             <ProjectCard
               key={project.id}
               project={project}
               darkMode={darkMode}
               borderColor={borderColor}
             />
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <button
-            className={`inline-flex items-center px-6 py-3 rounded-lg font-medium border ${borderColor} hover:bg-indigo-500 hover:border-indigo-500 hover:text-white transition-all`}
-          >
-            View All Projects
-            <ArrowRight size={20} className="ml-2 mt-1" />
-          </button>
-        </div>
+          )}
+        />
       </div>
     </section>
   );
@@ -70,14 +64,13 @@ function ProjectCard({ project, darkMode, borderColor }) {
               darkMode ? "bg-gray-800" : "bg-gray-100"
             } flex items-center justify-center`}
           >
-            {/* Placeholder for project image - would be replaced with actual project images */}
-            <PanelsTopLeft size={60} />
-            {/* <Image
+            <Image
               src={project.imageUrl}
+              className="h-full w-full object-cover rounded-xl"
               alt="Project"
-              width={300}
-              height={200}
-            /> */}
+              width={500}
+              height={400}
+            />
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/90 via-indigo-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -100,15 +93,24 @@ function ProjectCard({ project, darkMode, borderColor }) {
                   </p>
                 </div>
                 <div className="flex space-x-2">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub Repository"
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                  >
-                    <Github size={16} />
-                  </a>
+                  {project.github ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub Repository"
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                    >
+                      <Github size={16} />
+                    </a>
+                  ) : (
+                    <span
+                      className="p-2 rounded-full bg-white/10 opacity-50 cursor-not-allowed"
+                      title="Repository is private"
+                    >
+                      <Github size={16} />
+                    </span>
+                  )}
 
                   <a
                     href={project.live}

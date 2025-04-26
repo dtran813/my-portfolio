@@ -48,7 +48,7 @@ export const PROJECTS = [
     title: "All For One",
     shortDescription: "AI SASS",
     description:
-      "An AI SASS that's so smart, it makes your computer look like it's still in kindergarten. A web application that allows users to generate images and text using AI.",
+      "An AI SASS that allows users to generate images and text using AI.",
     imageUrl: "/images/projects/afo.png",
     technologies: ["Next.js", "Prisma", "TailwindCSS"],
     github: "https://github.com/dtran813/ai-saas",
@@ -81,7 +81,7 @@ export const PROJECTS = [
     title: "Pig Game",
     shortDescription: "A simple dice game",
     description:
-      "Pig Game has two players, so to make it fair, let's give them two dice instead. A simple dice game where players take turns rolling two dice and accumulating points.",
+      "A simple dice game where players take turns rolling two dice and accumulating points.",
     imageUrl: "/images/projects/pig_game.png",
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/dtran813/pig-game",
