@@ -142,7 +142,7 @@ export const TECH_CATEGORIES = [
     title: "Backend",
     description:
       "Building robust server-side applications and APIs that power web applications",
-    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL"],
+    items: ["Node.js", "Express", "MongoDB", "PostgreSQL"],
     icon: "⚙️",
   },
   {
@@ -163,14 +163,14 @@ export const TECH_CATEGORIES = [
     title: "Mobile",
     description:
       "Developing cross-platform mobile applications with native-like performance",
-    items: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+    items: ["React Native", "Kotlin", "Firebase"],
     icon: "📱",
   },
   {
     title: "Other",
     description:
       "Additional technologies and languages that round out my technical expertise",
-    items: ["Python", "Java", "C#", "WebSockets", "Redis"],
+    items: ["Python", "Java", "C#", "WebSockets"],
     icon: "🧠",
   },
 ];
