@@ -21,7 +21,7 @@ export default function Navbar() {
           : "py-6 bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div
           className={`text-xl font-bold flex items-center ${
             isScrolled || activeSection !== "hero" ? "opacity-100" : "opacity-0"

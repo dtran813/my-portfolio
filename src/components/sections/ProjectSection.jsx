@@ -14,7 +14,7 @@ export default function ProjectSection() {
       {/* Background blob */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1/2 bg-indigo-500/5 rounded-l-3xl blur-3xl" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
             <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>

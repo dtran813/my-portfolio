@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className={`py-8 border-t ${borderColor} mt-8`}>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-6 md:mb-0">
             <Code className={`mr-2 ${accentColor}`} />

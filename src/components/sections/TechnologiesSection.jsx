@@ -9,7 +9,7 @@ export default function TechnologiesSection() {
 
   return (
     <section id="technologies" className="py-20 relative">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
             <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>

@@ -274,7 +274,7 @@ export default function EnhancedHeroSection() {
       />
 
       {/* Main content */}
-      <div className="max-w-6xl mx-auto px-6 z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 z-10 w-full">
         <div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           style={{
