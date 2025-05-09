@@ -10,7 +10,8 @@ import {
 } from "@/utils/constants";
 
 export default function AboutSection() {
-  const { darkMode, textColor, borderColor, cardBg, accentColor } = useTheme();
+  const { darkMode, bgColor, textColor, borderColor, cardBg, accentColor } =
+    useTheme();
 
   // For scroll animations
   const [activeChapter, setActiveChapter] = useState(0);
@@ -75,11 +76,7 @@ export default function AboutSection() {
               />
             </div>
           </h2>
-          <p
-            className={`text-lg ${
-              darkMode ? "text-gray-300" : "text-gray-700"
-            } max-w-3xl mx-auto`}
-          >
+          <p className={`text-lg ${textColor} max-w-3xl mx-auto`}>
             A creative technologist with a background in design and engineering,
             blending aesthetics with functionality to craft meaningful digital
             experiences.
@@ -116,9 +113,7 @@ export default function AboutSection() {
           <div className="relative">
             {/* Vertical timeline line */}
             <div
-              className={`absolute h-full w-1 left-1/2 transform -translate-x-1/2 ${
-                darkMode ? "bg-gray-800" : "bg-gray-300"
-              }`}
+              className={`absolute h-full w-1 left-1/2 transform -translate-x-1/2 ${bgColor}`}
             ></div>
 
             {/* Progress indicator */}
@@ -141,9 +136,7 @@ export default function AboutSection() {
                 <div
                   className={`absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-${
                     chapter.color
-                  }-500/20 border-4 ${
-                    darkMode ? `border-gray-800` : `border-white`
-                  } flex items-center justify-center text-xl z-10 ${
+                  }-500/20 border-4 ${borderColor} flex items-center justify-center text-xl z-10 ${
                     activeChapter === idx
                       ? "ring-4 ring-indigo-500/30 animate-pulse-slow"
                       : ""
@@ -167,10 +160,10 @@ export default function AboutSection() {
                     chapter={chapter}
                     idx={idx}
                     activeChapter={activeChapter}
+                    textColor={textColor}
                     cardBg={cardBg}
                     accentColor={accentColor}
                     borderColor={borderColor}
-                    darkMode={darkMode}
                   />
 
                   {idx % 2 === 0 && <div className="hidden md:block"></div>}
@@ -257,63 +250,101 @@ const ChapterCard = ({
   chapter,
   idx,
   activeChapter,
+  textColor,
   cardBg,
   accentColor,
   borderColor,
-  darkMode,
-}) => (
-  <div
-    className={`${cardBg} rounded-xl border ${
-      activeChapter === idx
-        ? "border-indigo-500/50 shadow-lg shadow-indigo-500/10"
-        : borderColor
-    } overflow-hidden transform transition-all duration-500 hover:scale-[1.03] hover:shadow-xl group ${
-      activeChapter === idx ? "scale-[1.02]" : ""
-    }`}
-  >
-    {/* Card header */}
+}) => {
+  // Map chapter color to static classes
+  const getChapterColorClasses = (colorName) => {
+    const colorMap = {
+      indigo: {
+        headerBg: "from-indigo-500/20",
+        skillBg: "bg-indigo-500/20",
+        skillText: "text-indigo-300",
+        skillBorder: "border-indigo-500/10",
+        decorationBar: "bg-indigo-500",
+      },
+      blue: {
+        headerBg: "from-blue-500/20",
+        skillBg: "bg-blue-500/20",
+        skillText: "text-blue-300",
+        skillBorder: "border-blue-500/10",
+        decorationBar: "bg-blue-500",
+      },
+      green: {
+        headerBg: "from-green-500/20",
+        skillBg: "bg-green-500/20",
+        skillText: "text-green-300",
+        skillBorder: "border-green-500/10",
+        decorationBar: "bg-green-500",
+      },
+      purple: {
+        headerBg: "from-purple-500/20",
+        skillBg: "bg-purple-500/20",
+        skillText: "text-purple-300",
+        skillBorder: "border-purple-500/10",
+        decorationBar: "bg-purple-500",
+      },
+    };
+
+    return colorMap[colorName] || colorMap.indigo; // Default to indigo if not found
+  };
+
+  const colorClasses = getChapterColorClasses(chapter.color);
+
+  return (
     <div
-      className={`bg-gradient-to-r from-${chapter.color}-500/20 to-transparent p-6`}
+      className={`${cardBg} rounded-xl border ${
+        activeChapter === idx
+          ? "border-indigo-500/50 shadow-lg shadow-indigo-500/10"
+          : borderColor
+      } overflow-hidden transform transition-all duration-500 hover:scale-[1.03] hover:shadow-xl group ${
+        activeChapter === idx ? "scale-[1.02]" : ""
+      }`}
     >
-      <div className={`text-sm font-semibold ${accentColor} mb-2`}>
-        {chapter.year}
-      </div>
-      <h3 className="text-2xl font-bold mb-1 group-hover:text-indigo-400 transition-colors flex items-center">
-        {chapter.title}
-        {activeChapter === idx && (
-          <Sparkles className="w-4 h-4 ml-2 text-indigo-400" />
-        )}
-      </h3>
-    </div>
-
-    {/* Card content */}
-    <div className="p-6 pt-4">
-      <p className={`${darkMode ? "text-gray-300" : "text-gray-600"} mb-6`}>
-        {chapter.content}
-      </p>
-
-      {/* Skills Tags */}
-      <div className="mb-6">
-        <div className="text-sm text-gray-400 mb-2">Key Skills:</div>
-        <div className="flex flex-wrap gap-2">
-          {chapter.skills.map((skill) => (
-            <span
-              key={skill}
-              className={`px-3 py-1 text-xs rounded-full bg-${chapter.color}-500/20 text-${chapter.color}-300 border border-${chapter.color}-500/10`}
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Decoration bar */}
+      {/* Card header with static class name */}
       <div
-        className={`w-full h-1 bg-${chapter.color}-500 rounded-full overflow-hidden mt-6`}
-      ></div>
+        className={`bg-gradient-to-r ${colorClasses.headerBg} to-transparent p-6`}
+      >
+        <div className={`text-sm font-semibold ${accentColor} mb-2`}>
+          {chapter.year}
+        </div>
+        <h3 className="text-2xl font-bold mb-1 group-hover:text-indigo-400 transition-colors flex items-center">
+          {chapter.title}
+          {activeChapter === idx && (
+            <Sparkles className="w-4 h-4 ml-2 text-indigo-400" />
+          )}
+        </h3>
+      </div>
+
+      {/* Card content */}
+      <div className="p-6 pt-4">
+        <p className={`${textColor} mb-6`}>{chapter.content}</p>
+
+        {/* Skills Tags */}
+        <div className="mb-6">
+          <div className="text-sm text-gray-400 mb-2">Key Skills:</div>
+          <div className="flex flex-wrap gap-2">
+            {chapter.skills.map((skill) => (
+              <span
+                key={skill}
+                className={`px-3 py-1 text-xs rounded-full ${colorClasses.skillBg} ${colorClasses.skillText} border ${colorClasses.skillBorder}`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Decoration bar */}
+        <div
+          className={`w-full h-1 ${colorClasses.decorationBar} rounded-full overflow-hidden mt-6`}
+        ></div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const SkillCard = ({
   title,
