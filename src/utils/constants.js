@@ -1,3 +1,5 @@
+import { Activity, Clapperboard, Mountain, Tent, Sparkles } from "lucide-react";
+
 export const SITE_CONFIG = {
   name: "Hoa Tran",
   title: "Software Engineer",
@@ -18,6 +20,108 @@ export const NAV_ITEMS = [
   { id: "experience", label: "Experience" },
   { id: "technologies", label: "Tech" },
 ];
+
+// About data - used by AboutSection
+export const CHAPTERS = [
+  {
+    title: "The Beginning",
+    year: "2019",
+    content:
+      "My journey started with a fascication for technology. I began learning the basics of web development, diving into HTML, CSS, and JavaScript. It was a world of endless possibilities.",
+    icon: "💡",
+    color: "indigo",
+    skills: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "Finding My Path",
+    year: "2020-2021",
+    content:
+      "Diving deeper into development, I discovered the perfect intersection of logic and creativity. I embraced the challenge of solving complex problems while maintaining beautiful interfaces. Besides, I started to learn about not only other programming languages but also game development with C#",
+    icon: "🧭",
+    color: "blue",
+    skills: ["React", "C#", "Java", "Python"],
+  },
+  {
+    title: "Growth & Learning",
+    year: "2022-2023",
+    content:
+      "Expanding my skills across the full stack, I delved into backend development and database management. I learned to build robust applications that are not only functional but also scalable.",
+    icon: "🌱",
+    color: "green",
+    skills: ["TypeScript", "Node.js", "MongoDB", "PostgreSQL"],
+  },
+  {
+    title: "Where I Am Today",
+    year: "2024-Present",
+    content:
+      "Now focused on creating impactful digital solutions, I combine technical expertise with a keen eye for design. I'm passionate about crafting experiences that are both functional and delightful.",
+    icon: "✨",
+    color: "purple",
+    skills: ["Next.js", "UI/UX Design", "Agile Development", "Problem Solving"],
+  },
+];
+
+export const FUN_FACTS = [
+  {
+    fact: "I once solo hiked to the summit of a 14ers",
+    icon: <Mountain className="w-5 h-5 text-green-400" />,
+    color: "green",
+  },
+  {
+    fact: "I've camped in below-freezing temperatures with a summer tent",
+    icon: <Tent className="w-5 h-5 text-blue-400" />,
+    color: "blue",
+  },
+  {
+    fact: "I've slept under the stars in the mountains",
+    icon: <Sparkles className="w-5 h-5 text-purple-400" />,
+    color: "purple",
+  },
+  {
+    fact: "I've watched Spirited Away and Howl's Moving Castle over 3 times",
+    icon: <Clapperboard className="w-5 h-5 text-yellow-400" />,
+    color: "yellow",
+  },
+  {
+    fact: "I'm dedicated to my fitness routine 6x weekly (of course I'm lazy sometimes)",
+    icon: <Activity className="w-5 h-5 text-red-400" />,
+    color: "red",
+  },
+];
+
+export const TECHNICAL_SKILLS = [
+  { skill: "JavaScript/TypeScript", level: 5 },
+  { skill: "React & Next.js", level: 5 },
+  { skill: "Node.js", level: 4 },
+  { skill: "AWS Cloud", level: 3 },
+];
+
+export const DESIGN_SKILLS = [
+  { skill: "UI/UX Design", level: 5 },
+  { skill: "Responsive Layouts", level: 4 },
+  { skill: "Animation & Interaction", level: 4 },
+  { skill: "Design Systems", level: 3 },
+];
+
+export const CORE_VALUES = [
+  {
+    value: "User-Centered Approach",
+    desc: "Always designing with the end user in mind",
+  },
+  {
+    value: "Continuous Learning",
+    desc: "Constantly expanding my knowledge and skills",
+  },
+  {
+    value: "Attention to Detail",
+    desc: "The little things make the biggest difference",
+  },
+  {
+    value: "Collaborative Spirit",
+    desc: "Best results come from teamwork and open communication",
+  },
+];
+// End of About data
 
 // Projects data - used by ProjectsSection
 export const PROJECTS = [
