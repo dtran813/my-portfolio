@@ -133,24 +133,12 @@ export default function AboutSection() {
                 ref={(el) => (chapterRefs.current[idx] = el)}
               >
                 {/* Timeline node with pulse animation */}
-                <div
-                  className={`absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-${
-                    chapter.color
-                  }-500/20 border-4 ${borderColor} flex items-center justify-center text-xl z-10 ${
-                    activeChapter === idx
-                      ? "ring-4 ring-indigo-500/30 animate-pulse-slow"
-                      : ""
-                  }`}
-                >
-                  <span
-                    className={activeChapter === idx ? "animate-bounce" : ""}
-                    style={{
-                      animationDuration: "2s",
-                    }}
-                  >
-                    {chapter.icon}
-                  </span>
-                </div>
+                <TimelineNode
+                  chapter={chapter}
+                  idx={idx}
+                  activeChapter={activeChapter}
+                  borderColor={borderColor}
+                />
 
                 {/* Card layout - Different for even/odd */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -164,6 +152,7 @@ export default function AboutSection() {
                     cardBg={cardBg}
                     accentColor={accentColor}
                     borderColor={borderColor}
+                    darkMode={darkMode}
                   />
 
                   {idx % 2 === 0 && <div className="hidden md:block"></div>}
@@ -246,6 +235,39 @@ export default function AboutSection() {
   );
 }
 
+const TimelineNode = ({ chapter, idx, activeChapter, borderColor }) => {
+  // Map node color to static classes
+  const getColorClasses = (colorName) => {
+    const colorMap = {
+      indigo: "bg-indigo-500/20",
+      blue: "bg-blue-500/20",
+      green: "bg-green-500/20",
+      purple: "bg-purple-500/20",
+    };
+
+    return colorMap[colorName] || "bg-indigo-500/20";
+  };
+
+  const colorClasses = getColorClasses(chapter.color);
+
+  return (
+    <div
+      className={`absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full ${colorClasses} border-4 ${borderColor} flex items-center justify-center text-xl z-10 ${
+        activeChapter === idx
+          ? "ring-4 ring-indigo-500/30 animate-pulse-slow"
+          : ""
+      }`}
+    >
+      <span
+        className={activeChapter === idx ? "animate-bounce" : ""}
+        style={{ animationDuration: "2s" }}
+      >
+        {chapter.icon}
+      </span>
+    </div>
+  );
+};
+
 const ChapterCard = ({
   chapter,
   idx,
@@ -254,44 +276,45 @@ const ChapterCard = ({
   cardBg,
   accentColor,
   borderColor,
+  darkMode,
 }) => {
   // Map chapter color to static classes
-  const getColorClasses = (colorName) => {
+  const getColorClasses = (colorName, darkMode) => {
     const colorMap = {
       indigo: {
         headerBg: "from-indigo-500/20",
-        skillBg: "bg-indigo-500/20",
-        skillText: "text-indigo-300",
-        skillBorder: "border-indigo-500/10",
+        skillBg: darkMode ? "bg-indigo-600/20" : "bg-indigo-100",
+        skillText: darkMode ? "text-indigo-300" : "text-indigo-700",
+        skillBorder: darkMode ? "border-indigo-500/20" : "border-indigo-300/30",
         decorationBar: "bg-indigo-500",
       },
       blue: {
         headerBg: "from-blue-500/20",
-        skillBg: "bg-blue-500/20",
-        skillText: "text-blue-300",
-        skillBorder: "border-blue-500/10",
+        skillBg: darkMode ? "bg-blue-600/20" : "bg-blue-100",
+        skillText: darkMode ? "text-blue-300" : "text-blue-700",
+        skillBorder: darkMode ? "border-blue-500/20" : "border-blue-300/30",
         decorationBar: "bg-blue-500",
       },
       green: {
         headerBg: "from-green-500/20",
-        skillBg: "bg-green-500/20",
-        skillText: "text-green-300",
-        skillBorder: "border-green-500/10",
+        skillBg: darkMode ? "bg-green-600/20" : "bg-green-100",
+        skillText: darkMode ? "text-green-300" : "text-green-700",
+        skillBorder: darkMode ? "border-green-500/20" : "border-green-300/30",
         decorationBar: "bg-green-500",
       },
       purple: {
         headerBg: "from-purple-500/20",
-        skillBg: "bg-purple-500/20",
-        skillText: "text-purple-300",
-        skillBorder: "border-purple-500/10",
+        skillBg: darkMode ? "bg-purple-600/20" : "bg-purple-100",
+        skillText: darkMode ? "text-purple-300" : "text-purple-700",
+        skillBorder: darkMode ? "border-purple-500/20" : "border-purple-300/30",
         decorationBar: "bg-purple-500",
       },
     };
 
-    return colorMap[colorName] || colorMap.indigo; // Default to indigo if not found
+    return colorMap[colorName] || colorMap.indigo;
   };
 
-  const colorClasses = getColorClasses(chapter.color);
+  const colorClasses = getColorClasses(chapter.color, darkMode);
 
   return (
     <div
@@ -378,7 +401,7 @@ const SkillCard = ({
       },
     };
 
-    return colorMap[colorName] || colorMap.indigo; // Default to indigo if not found
+    return colorMap[colorName] || colorMap.indigo;
   };
 
   const colorClasses = getColorClasses(color);
@@ -455,34 +478,74 @@ const ValuesCard = ({ values, cardBg, borderColor }) => (
   </div>
 );
 
-const FactCard = ({ fact, textColor, cardBg, borderColor, darkMode }) => (
-  <div
-    className={`${cardBg} rounded-lg border ${borderColor} p-6 transform transition-all duration-300 hover:scale-[1.05] hover:shadow-lg group relative overflow-hidden`}
-  >
-    {/* Decorative circle */}
+const FactCard = ({ fact, textColor, cardBg, borderColor, darkMode }) => {
+  // Map fact colors to static classes
+  const getColorClasses = (colorName) => {
+    const colorMap = {
+      blue: {
+        circleBg: "bg-blue-500/10",
+        iconBg: "bg-blue-500/20",
+        hoverTextDark: "group-hover:text-blue-300",
+        hoverTextLight: "group-hover:text-blue-600",
+      },
+      green: {
+        circleBg: "bg-green-500/10",
+        iconBg: "bg-green-500/20",
+        hoverTextDark: "group-hover:text-green-300",
+        hoverTextLight: "group-hover:text-green-600",
+      },
+      purple: {
+        circleBg: "bg-purple-500/10",
+        iconBg: "bg-purple-500/20",
+        hoverTextDark: "group-hover:text-purple-300",
+        hoverTextLight: "group-hover:text-purple-600",
+      },
+      yellow: {
+        circleBg: "bg-yellow-500/10",
+        iconBg: "bg-yellow-500/20",
+        hoverTextDark: "group-hover:text-yellow-300",
+        hoverTextLight: "group-hover:text-yellow-600",
+      },
+      red: {
+        circleBg: "bg-red-500/10",
+        iconBg: "bg-red-500/20",
+        hoverTextDark: "group-hover:text-red-300",
+        hoverTextLight: "group-hover:text-red-600",
+      },
+    };
+
+    return colorMap[colorName] || colorMap.blue;
+  };
+
+  const colorClasses = getColorClasses(fact.color);
+
+  return (
     <div
-      className={`absolute -right-8 -top-8 w-16 h-16 rounded-full bg-${fact.color}-500/10 group-hover:scale-150 transition-transform duration-500`}
-    ></div>
-
-    <div className="relative">
+      className={`${cardBg} rounded-lg border ${borderColor} p-6 transform transition-all duration-300 hover:scale-[1.05] hover:shadow-lg group relative overflow-hidden`}
+    >
+      {/* Decorative circle */}
       <div
-        className={`w-12 h-12 rounded-full bg-${fact.color}-500/20 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform`}
-      >
-        {fact.icon}
-      </div>
+        className={`absolute -right-8 -top-8 w-16 h-16 rounded-full ${colorClasses.circleBg} group-hover:scale-150 transition-transform duration-500`}
+      ></div>
 
-      <p
-        className={`${textColor} ${
-          darkMode
-            ? `group-hover:text-${fact.color}-300`
-            : `group-hover:text-${fact.color}-600`
-        } transition-colors`}
-      >
-        {fact.fact}
-      </p>
+      <div className="relative">
+        <div
+          className={`w-12 h-12 rounded-full ${colorClasses.iconBg} mb-4 flex items-center justify-center group-hover:scale-110 transition-transform`}
+        >
+          {fact.icon}
+        </div>
+
+        <p
+          className={`${textColor} ${
+            darkMode ? colorClasses.hoverTextDark : colorClasses.hoverTextLight
+          } transition-colors`}
+        >
+          {fact.fact}
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const CallToAction = ({ darkMode }) => (
   <div
@@ -495,10 +558,10 @@ const CallToAction = ({ darkMode }) => (
     </div>
 
     <div className="relative">
-      <h3 className="text-2xl font-bold mb-4 group-hover:text-indigo-300 transition-colors">
+      <h3 className="text-2xl font-bold mb-4 group-hover:text-indigo-400 transition-colors">
         Ready to Start a Project Together?
       </h3>
-      <p className="mb-6 text-gray-300 max-w-lg mx-auto">
+      <p className="mb-6 max-w-lg mx-auto">
         I'm always looking for new opportunities to create amazing things and
         exciting collaborations. Let's create something amazing together.
       </p>
