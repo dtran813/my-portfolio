@@ -256,7 +256,7 @@ const ChapterCard = ({
   borderColor,
 }) => {
   // Map chapter color to static classes
-  const getChapterColorClasses = (colorName) => {
+  const getColorClasses = (colorName) => {
     const colorMap = {
       indigo: {
         headerBg: "from-indigo-500/20",
@@ -291,7 +291,7 @@ const ChapterCard = ({
     return colorMap[colorName] || colorMap.indigo; // Default to indigo if not found
   };
 
-  const colorClasses = getChapterColorClasses(chapter.color);
+  const colorClasses = getColorClasses(chapter.color);
 
   return (
     <div
@@ -354,44 +354,74 @@ const SkillCard = ({
   skills,
   cardBg,
   borderColor,
-}) => (
-  <div
-    className={`${cardBg} rounded-lg border ${borderColor} p-6 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg`}
-  >
-    <div className="relative h-16 w-16 mb-4">
-      <div
-        className={`absolute inset-0 bg-gradient-to-br from-${color}-500 to-${
-          color === "indigo" ? "purple" : color === "blue" ? "cyan" : "pink"
-        }-600 rounded-lg opacity-20 animate-pulse-slow`}
-      ></div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        {icon}
+}) => {
+  // Map skill bar color to static classes
+  const getColorClasses = (colorName) => {
+    const colorMap = {
+      indigo: {
+        gradientFrom: "from-indigo-500",
+        gradientTo: "to-purple-600",
+        dot: "bg-indigo-500",
+        bar: "bg-indigo-500",
+      },
+      blue: {
+        gradientFrom: "from-blue-500",
+        gradientTo: "to-cyan-600",
+        dot: "bg-blue-500",
+        bar: "bg-blue-500",
+      },
+      purple: {
+        gradientFrom: "from-purple-500",
+        gradientTo: "to-pink-600",
+        dot: "bg-purple-500",
+        bar: "bg-purple-500",
+      },
+    };
+
+    return colorMap[colorName] || colorMap.indigo; // Default to indigo if not found
+  };
+
+  const colorClasses = getColorClasses(color);
+
+  return (
+    <div
+      className={`${cardBg} rounded-lg border ${borderColor} p-6 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-lg`}
+    >
+      <div className="relative h-16 w-16 mb-4">
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${colorClasses.gradientFrom} ${colorClasses.gradientTo} rounded-lg opacity-20 animate-pulse-slow`}
+        ></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          {icon}
+        </div>
+      </div>
+
+      <h4 className="text-xl font-bold mb-3">{title}</h4>
+      <p className="mb-4">{description}</p>
+
+      <div className="space-y-3">
+        {skills.map((item, i) => (
+          <div key={i} className="flex items-center">
+            <div
+              className={`h-2 w-2 rounded-full ${colorClasses.dot} mr-3`}
+            ></div>
+            <div className="text-sm">{item.skill}</div>
+            <div className="ml-auto flex">
+              {[...Array(5)].map((_, j) => (
+                <div
+                  key={j}
+                  className={`h-1.5 w-5 rounded-full ml-1 ${
+                    j < item.level ? colorClasses.bar : "bg-gray-700"
+                  }`}
+                ></div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-
-    <h4 className="text-xl font-bold mb-3">{title}</h4>
-    <p className="text-gray-400 mb-4">{description}</p>
-
-    <div className="space-y-3">
-      {skills.map((item, i) => (
-        <div key={i} className="flex items-center">
-          <div className={`h-2 w-2 rounded-full bg-${color}-500 mr-3`}></div>
-          <div className="text-sm">{item.skill}</div>
-          <div className="ml-auto flex">
-            {[...Array(5)].map((_, j) => (
-              <div
-                key={j}
-                className={`h-1.5 w-5 rounded-full ml-1 ${
-                  j < item.level ? `bg-${color}-500` : "bg-gray-700"
-                }`}
-              ></div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 const ValuesCard = ({ values, cardBg, borderColor }) => (
   <div
@@ -405,7 +435,7 @@ const ValuesCard = ({ values, cardBg, borderColor }) => (
     </div>
 
     <h4 className="text-xl font-bold mb-3">Core Values</h4>
-    <p className="text-gray-400 mb-4">
+    <p className="mb-4">
       The principles that guide my work and approach to every project.
     </p>
 
@@ -414,11 +444,11 @@ const ValuesCard = ({ values, cardBg, borderColor }) => (
         <div key={i} className="group">
           <div className="flex items-center mb-1">
             <div className="h-2 w-2 rounded-full bg-purple-500 mr-3 group-hover:scale-150 transition-transform"></div>
-            <div className="text-sm font-medium text-purple-300">
+            <div className="text-sm font-medium text-purple-400">
               {item.value}
             </div>
           </div>
-          <div className="text-xs text-gray-400 pl-5">{item.desc}</div>
+          <div className="text-xs pl-5">{item.desc}</div>
         </div>
       ))}
     </div>

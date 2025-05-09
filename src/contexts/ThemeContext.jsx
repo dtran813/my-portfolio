@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }) => {
     darkMode,
     toggleDarkMode,
     bgColor: darkMode ? "bg-gray-900" : "bg-gray-100",
-    textColor: darkMode ? "text-gray-100" : "text-gray-900",
+    textColor: darkMode ? "text-gray-300" : "text-gray-600",
     cardBg: darkMode ? "bg-gray-800" : "bg-white",
     accentColor: darkMode ? "text-indigo-400" : "text-indigo-600",
     borderColor: darkMode ? "border-gray-700" : "border-gray-300",
