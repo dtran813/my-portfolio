@@ -2,12 +2,12 @@
 
 import { useTheme } from "@/contexts/ThemeContext";
 import { PROJECTS } from "@/utils/constants";
-import { ExternalLink, Github } from "lucide-react";
+import { Code, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Carousel from "../ui/Carousel";
 
 export default function ProjectSection() {
-  const { darkMode, borderColor, accentColor } = useTheme();
+  const { darkMode, textColor, borderColor, accentColor } = useTheme();
 
   return (
     <section id="projects" className="py-20 relative">
@@ -15,18 +15,18 @@ export default function ProjectSection() {
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1/2 bg-indigo-500/5 rounded-l-3xl blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <div>
-            <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
-              # FEATURED WORK
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold">Projects</h2>
-          </div>
-          <p
-            className={`mt-4 md:mt-0 max-w-md ${
-              darkMode ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
+        <div className="text-center mb-16">
+          <p className={`${accentColor} font-mono mb-4`}># FEATURED WORK</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
+            Showcasing My Work
+            <div className="absolute -right-10 -top-10">
+              <Code
+                className={`${accentColor} animate-pulse`}
+                style={{ animationDuration: "3s" }}
+              />
+            </div>
+          </h2>
+          <p className={`text-lg ${textColor} max-w-3xl mx-auto`}>
             A selection of my recent work and personal projects showcasing my
             skills and interests.
           </p>

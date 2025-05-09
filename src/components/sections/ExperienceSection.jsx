@@ -2,10 +2,10 @@
 
 import { useTheme } from "@/contexts/ThemeContext";
 import { EXPERIENCES } from "@/utils/constants";
-import { Download } from "lucide-react";
+import { Briefcase, Download } from "lucide-react";
 
 export default function ExperienceSection() {
-  const { darkMode, borderColor, cardBg, accentColor } = useTheme();
+  const { darkMode, textColor, borderColor, cardBg, accentColor } = useTheme();
 
   return (
     <section id="experience" className="py-20 relative">
@@ -13,20 +13,22 @@ export default function ExperienceSection() {
       <div className="absolute left-0 top-1/3 transform -translate-y-1/2 w-1/4 h-1/2 bg-indigo-500/5 rounded-r-3xl blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <div>
-            <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
-              # PROFESSIONAL JOURNEY
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold">Experience</h2>
-          </div>
-          <p
-            className={`mt-4 md:mt-0 max-w-md ${
-              darkMode ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            My professional journey and key roles that have shaped my career and
-            expertise.
+        <div className="text-center mb-16">
+          <p className={`${accentColor} font-mono mb-4`}>
+            # PROFESSIONAL JOURNEY
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
+            Where I've Worked
+            <div className="absolute -right-10 -top-10">
+              <Briefcase
+                className={`${accentColor} animate-pulse`}
+                style={{ animationDuration: "3s" }}
+              />
+            </div>
+          </h2>
+          <p className={`text-lg ${textColor} max-w-3xl mx-auto`}>
+            My professional experience and the skills I've developed along the
+            way.
           </p>
         </div>
 

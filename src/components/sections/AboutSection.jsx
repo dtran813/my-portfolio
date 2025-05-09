@@ -64,9 +64,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
-            # MY JOURNEY
-          </p>
+          <p className={`${accentColor} font-mono mb-4`}># MY JOURNEY</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
             The Story Behind The Code
             <div className="absolute -right-10 -top-10">

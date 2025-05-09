@@ -2,28 +2,30 @@
 
 import { useTheme } from "@/contexts/ThemeContext";
 import { TECH_CATEGORIES } from "@/utils/constants";
-import { Mail } from "lucide-react";
+import { Cpu, Mail } from "lucide-react";
 
 export default function TechnologiesSection() {
-  const { darkMode, borderColor, cardBg, accentColor } = useTheme();
+  const { darkMode, textColor, borderColor, cardBg, accentColor } = useTheme();
 
   return (
     <section id="technologies" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <div>
-            <p className={`inline-block ${accentColor} font-mono text-sm mb-4`}>
-              # TOOLS & TECHNOLOGIES
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold">Tech Stack</h2>
-          </div>
-          <p
-            className={`mt-4 md:mt-0 max-w-md ${
-              darkMode ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            Tools and technologies I use to bring ideas to life in my software
-            development journey.
+        <div className="text-center mb-16">
+          <p className={`${accentColor} font-mono mb-4`}>
+            # TOOLS & TECHNOLOGIES
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
+            What I Use
+            <div className="absolute -right-10 -top-10">
+              <Cpu
+                className={`${accentColor} animate-pulse`}
+                style={{ animationDuration: "3s" }}
+              />
+            </div>
+          </h2>
+          <p className={`text-lg ${textColor} max-w-3xl mx-auto`}>
+            The technologies, frameworks, and tools I use to bring ideas to
+            life.
           </p>
         </div>
 
