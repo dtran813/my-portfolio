@@ -36,7 +36,7 @@ export const CHAPTERS = [
     title: "Finding My Path",
     year: "2020-2021",
     content:
-      "Diving deeper into development, I discovered the perfect intersection of logic and creativity. I embraced the challenge of solving complex problems while maintaining beautiful interfaces. Besides, I started to learn about not only other programming languages but also game development with C#",
+      "Diving deeper into development, I discovered the perfect intersection of logic and creativity. I embraced the challenge of solving complex problems while maintaining beautiful interfaces. Besides, I started to learn about not only other programming languages but also game development with C#.",
     icon: "🧭",
     color: "blue",
     skills: ["React", "C#", "Java", "Python"],
