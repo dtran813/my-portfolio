@@ -16,7 +16,7 @@ export default function TechnologiesSection() {
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
             What I Use
-            <div className="absolute -right-10 -top-10">
+            <div className="absolute -right-20 -top-10">
               <Cpu
                 className={`${accentColor} animate-pulse`}
                 style={{ animationDuration: "3s" }}

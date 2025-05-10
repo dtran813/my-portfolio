@@ -67,7 +67,7 @@ export default function AboutSection() {
           <p className={`${accentColor} font-mono mb-4`}># MY JOURNEY</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
             The Story Behind The Code
-            <div className="absolute -right-10 -top-10">
+            <div className="absolute right-0 md:-right-10 -top-10">
               <Sparkles
                 className={`${accentColor} animate-pulse`}
                 style={{ animationDuration: "3s" }}
