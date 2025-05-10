@@ -239,7 +239,7 @@ export const TECH_CATEGORIES = [
     title: "Frontend",
     description:
       "Creating responsive, intuitive user interfaces with modern frameworks and tools",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux"],
+    items: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
     icon: "🎨",
   },
   {
@@ -253,14 +253,14 @@ export const TECH_CATEGORIES = [
     title: "DevOps",
     description:
       "Streamlining deployment and ensuring reliable, scalable application infrastructure",
-    items: ["Docker", "AWS", "GitHub Actions", "Terraform", "Nginx"],
+    items: ["Docker", "AWS", "GitHub Actions", "Jenkins"],
     icon: "🚀",
   },
   {
     title: "Tools",
     description:
       "Leveraging industry-standard tools to optimize the development workflow",
-    items: ["Git", "VS Code", "Webpack", "Jest", "Figma"],
+    items: ["Jira", "Git", "VS Code", "Figma"],
     icon: "🛠️",
   },
   {
@@ -274,7 +274,7 @@ export const TECH_CATEGORIES = [
     title: "Other",
     description:
       "Additional technologies and languages that round out my technical expertise",
-    items: ["Python", "Java", "C#", "WebSockets"],
+    items: ["Python", "Java", "C#", "C++"],
     icon: "🧠",
   },
 ];
