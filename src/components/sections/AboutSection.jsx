@@ -565,10 +565,13 @@ const CallToAction = ({ darkMode }) => (
       </p>
 
       <div className="flex justify-center gap-4">
-        <button className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-500 hover:to-indigo-600 transition-all duration-300 shadow-lg flex items-center transform group-hover:scale-105">
+        <a
+          href="mailto:hdt1308@gmail.com"
+          className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg hover:from-indigo-500 hover:to-indigo-600 transition-all duration-300 shadow-lg flex items-center transform hover:scale-105 hover:shadow-indigo-500/25"
+        >
           <Mail className="mr-2" size={18} />
           Get in Touch
-        </button>
+        </a>
       </div>
     </div>
   </div>

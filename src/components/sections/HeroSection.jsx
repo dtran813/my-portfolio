@@ -395,7 +395,8 @@ export default function EnhancedHeroSection() {
                 transitionDelay: "1.2s",
               }}
             >
-              <button
+              <a
+                href="mailto:hdt1308@gmail.com"
                 className={`relative group overflow-hidden px-6 py-3 rounded-lg font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-lg flex items-center transform hover:scale-105`}
               >
                 <span className="absolute inset-0 w-0 bg-gradient-to-r from-indigo-600 to-blue-500 transition-all duration-300 ease-out group-hover:w-full" />
@@ -403,17 +404,20 @@ export default function EnhancedHeroSection() {
                   <Mail className="mr-2" size={18} />
                   Start a Project
                 </span>
-              </button>
+              </a>
 
-              <button
+              <a
+                href="/assets/HoaTran_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`relative group overflow-hidden px-6 py-3 rounded-lg font-medium border ${borderColor} hover:border-indigo-500 transition-colors flex items-center transform hover:scale-105`}
               >
                 <span className="absolute inset-0 w-0 bg-indigo-500/10 transition-all duration-300 ease-out group-hover:w-full" />
                 <span className="relative z-10 flex items-center">
                   <Download className="mr-2" size={18} />
-                  Download CV
+                  View Resume
                 </span>
-              </button>
+              </a>
             </div>
 
             {/* Social links */}

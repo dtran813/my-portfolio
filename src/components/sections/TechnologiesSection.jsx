@@ -54,10 +54,13 @@ export default function TechnologiesSection() {
                 work.
               </p>
             </div>
-            <button className="px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg flex items-center transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/20">
+            <a
+              href="mailto:hdt1308@gmail.com"
+              className="px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg flex items-center transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/20"
+            >
               <Mail className="mr-2" size={20} />
               Get in Touch
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -50,8 +50,7 @@ export default function Footer() {
             darkMode ? "text-gray-500" : "text-gray-600"
           }`}
         >
-          <p>© {currentYear} HoaTran. All rights reserved.</p>
-          <p className="mt-2 text-sm">Built with love 💖 and coffee ☕.</p>
+          <p>© {currentYear} Hoa Tran. All rights reserved.</p>
         </div>
       </div>
     </footer>
