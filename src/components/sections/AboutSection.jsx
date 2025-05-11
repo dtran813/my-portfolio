@@ -250,7 +250,7 @@ const TimelineNode = ({ chapter, idx, activeChapter, borderColor }) => {
 
   return (
     <div
-      className={`absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full ${colorClasses} border-4 ${borderColor} flex items-center justify-center text-xl z-10 ${
+      className={`absolute -top-8 md:top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full ${colorClasses} border-4 ${borderColor} flex items-center justify-center text-xl z-10 ${
         activeChapter === idx
           ? "ring-4 ring-indigo-500/30 animate-pulse-slow"
           : ""
