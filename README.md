@@ -17,8 +17,8 @@ A modern, responsive portfolio website built with Next.js, React, and Tailwind C
 1. Clone the repository:
 
    ```
-   git clone https://github.com/yourusername/portfolio-nextjs.git
-   cd portfolio-nextjs
+   git clone https://github.com/yourusername/my-portfolio.git
+   cd my-portfolio
    ```
 
 2. Install dependencies:
