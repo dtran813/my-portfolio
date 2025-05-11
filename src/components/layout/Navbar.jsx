@@ -3,16 +3,35 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { useScrolling } from "@/hooks/useScrolling";
 import { NAV_ITEMS, SITE_CONFIG } from "@/utils/constants";
-import { Code, Github, Linkedin, Moon, Sun } from "lucide-react";
+import { Code, Github, Linkedin, Moon, Sun, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const { darkMode, toggleDarkMode, accentColor, borderColor } = useTheme();
+  const { darkMode, toggleDarkMode, bgColor, accentColor, borderColor } =
+    useTheme();
   const { activeSection, isScrolled, scrollToSection } = useScrolling();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleNavClick = (sectionId) => {
+    scrollToSection(sectionId);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || mobileMenuOpen
           ? `py-3 ${
               darkMode
                 ? "bg-gray-900/90 backdrop-blur-lg shadow-lg"
@@ -22,16 +41,20 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
         <div
           className={`text-xl font-bold flex items-center ${
-            isScrolled || activeSection !== "hero" ? "opacity-100" : "opacity-0"
+            isScrolled || activeSection !== "hero" || mobileMenuOpen
+              ? "opacity-100"
+              : "opacity-0"
           } transition-opacity`}
         >
           <Code className={`mr-2 ${accentColor}`} />
           <span>{SITE_CONFIG.domain}</span>
         </div>
 
-        <div className="flex items-center space-x-8">
+        {/* Desktop navigation */}
+        <div className="hidden md:flex items-center space-x-8">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
@@ -54,7 +77,8 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center space-x-4">
+        {/* Desktop action icons */}
+        <div className="hidden md:flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
             className={`p-2 rounded-full ${
@@ -98,7 +122,71 @@ export default function Navbar() {
             </div>
           </a>
         </div>
+
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 md:hidden"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden">
+          <div className={`px-6 py-2`}>
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`block w-full text-left py-3 ${
+                  activeSection === item.id ? accentColor : ""
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+
+            <div
+              className={`flex items-center justify-between mt-4 pt-4 border-t ${borderColor}`}
+            >
+              <button onClick={toggleDarkMode} className="flex items-center">
+                {darkMode ? (
+                  <>
+                    <Sun size={16} className="mr-2" />
+                    <span className="text-sm">Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon size={16} className="mr-2" />
+                    <span className="text-sm">Dark Mode</span>
+                  </>
+                )}
+              </button>
+
+              <div className="flex items-center space-x-4">
+                <a
+                  href={SITE_CONFIG.socialLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                >
+                  <Github size={20} />
+                </a>
+                <a
+                  href={SITE_CONFIG.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
