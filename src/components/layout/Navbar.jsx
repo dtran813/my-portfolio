@@ -59,7 +59,7 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative overflow-hidden group`}
+              className={`relative overflow-hidden group cursor-pointer`}
             >
               <span
                 className={`${activeSection === item.id ? accentColor : ""}`}
@@ -83,7 +83,7 @@ export default function Navbar() {
             onClick={toggleDarkMode}
             className={`p-2 rounded-full ${
               darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
-            } transition-colors relative overflow-hidden group`}
+            } transition-colors relative overflow-hidden group cursor-pointer`}
             aria-label="Toggle dark mode"
           >
             <div className="absolute inset-0 bg-indigo-500/10 scale-0 rounded-full group-hover:scale-100 transition-transform duration-300"></div>
