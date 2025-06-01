@@ -112,15 +112,24 @@ function ProjectCard({ project, darkMode, borderColor }) {
                     </span>
                   )}
 
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Live Demo"
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
+                  {project.live ? (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Live Demo"
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  ) : (
+                    <span
+                      className="p-2 rounded-full bg-white/10 opacity-50 cursor-not-allowed"
+                      title="Live demo not available"
+                    >
+                      <ExternalLink size={16} />
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

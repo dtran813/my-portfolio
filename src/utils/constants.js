@@ -138,6 +138,17 @@ export const PROJECTS = [
   },
   {
     id: 2,
+    title: "NoteAble",
+    shortDescription: "A mobile app for music education",
+    description:
+      "A mobile app that helps users develop a musical ear. The app detects music notes and provides feedback on intonation in real-time.",
+    imageUrl: "/images/projects/noteable.png",
+    technologies: ["Kotlin", "Gradle", "TarsosDSP"],
+    github: "https://github.com/dtran813/noteable",
+    live: null,
+  },
+  {
+    id: 3,
     title: "Home Safari",
     shortDescription: "An Airbnb clone website",
     description:
@@ -148,7 +159,7 @@ export const PROJECTS = [
     live: "https://homesafari.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "All For One",
     shortDescription: "AI SASS",
     description:
@@ -159,7 +170,7 @@ export const PROJECTS = [
     live: "https://afoai.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "OH2K Bank",
     shortDescription: "Landing website",
     description:
@@ -170,7 +181,7 @@ export const PROJECTS = [
     live: "https://oh2kbank.netlify.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "CalcuNow",
     shortDescription: "A simple calculator",
     description:
@@ -181,7 +192,7 @@ export const PROJECTS = [
     live: "https://calcunow.netlify.app/",
   },
   {
-    id: 6,
+    id: 7,
     title: "Pig Game",
     shortDescription: "A simple dice game",
     description:
